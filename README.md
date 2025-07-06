@@ -1,2 +1,0 @@
-# Nextjs-Dashboard
-Learning purpose

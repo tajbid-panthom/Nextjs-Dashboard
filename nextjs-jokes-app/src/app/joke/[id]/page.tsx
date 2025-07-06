@@ -1,21 +1,34 @@
 // app/joke/[id]/page.tsx
 
-import { getJokeById, jokes } from "@/app/lib/jokes";
+import { getJokeById } from "@/app/lib/jokes";
+import { notFound } from "next/navigation";
 
-interface Props {
-  params: { id: string };
-}
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
 
 export async function generateStaticParams() {
-  return jokes.map((joke) => ({
-    id: joke.id,
-  }));
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" },
+    { id: "4" },
+    { id: "5" },
+    { id: "6" },
+    { id: "7" },
+    { id: "8" },
+    { id: "9" },
+    { id: "10" },
+    { id: "11" },
+    { id: "12" },
+    { id: "13" },
+  ];
 }
 
-export default function JokePage({ params }: Props) {
-  const joke = getJokeById(params.id);
-
-  if (!joke) return <p>Joke not found!</p>;
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
+  const joke = getJokeById(id);
+  if (!joke) notFound();
 
   return (
     <main style={{ padding: "2rem" }}>

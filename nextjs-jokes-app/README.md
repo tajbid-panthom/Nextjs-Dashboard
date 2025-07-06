@@ -20,6 +20,29 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Routes
+
+This Next.js jokes app includes the following routes:
+
+### `/` (Home Page)
+- **File**: `src/app/page.tsx`
+- **Description**: Displays a list of all available jokes
+- **Features**: 
+  - Shows a "😂 Joke List" heading
+  - Lists all jokes with clickable links to individual joke pages
+  - Each joke title links to `/joke/[id]`
+
+### `/joke/[id]` (Individual Joke Page)
+- **File**: `src/app/joke/[id]/page.tsx`
+- **Description**: Displays a specific joke by its ID
+- **Features**:
+  - Shows the joke title and content
+  - Uses dynamic routing with `[id]` parameter
+  - Includes static generation for all joke IDs
+  - Shows "Joke not found!" message for invalid IDs
+- **Parameters**:
+  - `id`: The unique identifier of the joke
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
